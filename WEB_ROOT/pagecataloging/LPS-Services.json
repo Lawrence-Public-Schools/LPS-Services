@@ -1,0 +1,34 @@
+{
+    "pages": [
+        {
+            "htmlID": "navStudentsFoster",
+            "title": "&tilde;Foster&tilde;",
+            "version": "1.0.0.5",
+            "contextType": "student",
+            "requiredContext": "student",
+            "sortOrder": 500,
+            "pageURL": "/admin/students/foster.html?frn=~(studentfrn)",
+            "parentHTMLID": "navStudentProfileMore"
+        },
+        {
+            "htmlID": "navStudentsHomeless",
+            "title": "&tilde;Homeless&tilde;",
+            "version": "1.0.0.5",
+            "contextType": "student",
+            "requiredContext": "student",
+            "sortOrder": 600,
+            "pageURL": "/admin/students/homeless.html?frn=~(studentfrn)",
+            "parentHTMLID": "navStudentProfileMore"
+        },
+        {
+            "htmlID": "navStudentsVariance",
+            "title": "&tilde;Variance&tilde;",
+            "version": "1.0.0.5",
+            "contextType": "student",
+            "requiredContext": "student",
+            "sortOrder": 800,
+            "pageURL": "/admin/students/variance.html?frn=~(studentfrn)",
+            "parentHTMLID": "navStudentProfileMore"
+        }
+    ]
+}

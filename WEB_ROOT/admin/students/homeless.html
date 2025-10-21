@@ -1,0 +1,93 @@
+<!--
+TemplateName:Admin Student Page
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Homeless</title>
+	<!-- required scripts -->
+	~[wc:commonscripts]
+	<!-- Required style sheets: screen.css, and print.css -->
+	<link href="/images/css/screen.css" rel="stylesheet" media="screen">
+	<link href="/images/css/print.css" rel="stylesheet" media="print">
+	<script src="/scripts/tlistCustomization.js"></script>
+	<style>
+		.homeless_comment {
+			width: 250px;
+			height: 75px;
+		}
+
+		.original_address {
+			width: 250px;
+			height: 75px;
+		}
+
+		.current_address {
+			width: 250px;
+			height: 75px;
+		}
+	</style>
+</head>
+
+<body>
+	~[wc:admin_header_frame_css]
+	<!-- breadcrumb start -->
+	<a href="/admin/home.html" target="_top">Start Page</a> &gt; <a
+		href="/admin/students/home.html?selectstudent=nosearch" target="_top">Student Selection</a> &gt; Homeless
+	<!-- breadcrumb end -->
+	~[wc:admin_navigation_frame_css]
+	<!-- start of main menu and content -->
+	~[wc:title_student_begin_css]Homeless~[wc:title_student_end_css]
+	<!-- start of tabs -->
+	~[SetPostValue:repType=hl]
+	<!-- end of tabs -->
+	<form action="/~[self.page]?frn=~(studentfrn)&changesSaved=true" method="POST">
+		<!-- start of content area -->
+		~[if.~(gpv.changesSaved)=true]<div class="feedback-confirm">~[text:psx.common.changes_recorded]</div>[/if]
+		<div class="box-round">
+			<table border="0" cellspacing="0" cellpadding="4">
+				<tr class="~[evenoddrow]">
+					<td class="bold">Homeless Icon<img src="/images/house1.gif"></td>
+					<td><select name="[01]homeless">
+							<option value="">No</option>
+							<option value="Y">Yes</option>
+						</select></td>
+				</tr>
+			</table>
+		</div>
+		<div class="box-round">
+			~[tlist_child:STUDENTS.U_homeless.U_homeless;displaycols:originaladdress,new_address,dateofchange,typeofhome,homeless_comment,transarrangement;fieldNames:Original
+			Address, New Address, Date of Change, Type of Home,Comment,Transportation;type:html]
+			<script>
+				var InstValues = {};
+				InstValues['Shelter'] = 'Shelter';
+				InstValues['Double'] = 'Doubled-Up';
+				InstValues['Unaccom'] = 'Unaccompanied Youth';
+				InstValues['Unsheltered'] = 'Unsheltered';
+				InstValues['Hotel'] = 'Hotels/Motels';
+				InstValues['Foster'] = 'Awaiting Foster Care';
+				tlistText2DropDown('typeofhome', InstValues);
+				tlistText2StaticTextAllowNew('homeless_comment');
+				var InstValues = {};
+				InstValues[' '] = '';
+				InstValues['LPS'] = 'Transported by LPS';
+				InstValues['Parent'] = 'Transported by Parent';
+				InstValues['Walk'] = 'Walking Distance';
+				InstValues['LHSB'] = 'Regular LHS Bus';
+				InstValues['Private'] = 'Private Bus';
+				InstValues['City'] = 'City Bus Pass';
+				tlistText2DropDown('transarrangement', InstValues);
+			</script>
+			<div class="button-row"><input type="hidden" name="ac" value="prim">~[submitbutton]</div>
+		</div>
+	</form>
+	<!-- Tiny text -->
+	<div style="font-size: 10px;">
+		<p>This page is part of the LPS-Services plugin.</p>
+	</div>
+	<!-- end of content area -->
+	~[wc:admin_footer_frame_css]
+</body>
+
+</html>
